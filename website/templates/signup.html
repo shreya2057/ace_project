@@ -2,7 +2,8 @@
 
 {% block content %}
 <div class="columns is-grouped m-0 p-0">
-    <form method="POST" class="column is-6 m-6 p-0">
+    <form method="POST" class="column is-6 p-0">
+        <strong class="has-text-link is-size-3 has-text-centered">Sign Up</strong>
         <div class="field mt-4">
             <label class="label has-text-link">Full Name</label>
             <div class="control has-icons-left has-icons-right">
@@ -51,12 +52,13 @@
                 </div>
             </div>
             <div class="field pl-3">
-                <label class="label has-text-link">Subject</label>
+                <label class="label has-text-link">Gender</label>
                 <div class="control">
                 <div class="select">
-                    <select class="input is-link">
-                    <option>Select dropdown</option>
-                    <option>With options</option>
+                    <select name="gender" class="input is-link">
+                        <option value="" disabled selected>Select your option</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
                     </select>
                 </div>
                 </div>
