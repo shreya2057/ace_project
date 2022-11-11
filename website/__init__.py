@@ -17,7 +17,6 @@ def create_app():
     from .views import views
     app.register_blueprint(views,url_prefix='/')
     app.register_blueprint(auth,url_prefix='/auth')
-    app.register_blueprint(auth,url_prefix='/')
 
     from .models import Doctor, Patient, User
 
