@@ -6,3 +6,13 @@ $(document).ready(function () {
 		$(".navbar-menu").toggleClass("is-active");
 	});
 });
+
+function changeValue(){
+	if (document.getElementById('role').checked) 
+  {
+      document.getElementById('roleValue').value = "Doctor";
+  } 
+  else{
+	document.getElementById('roleValue').value = "Patient";
+  }
+}

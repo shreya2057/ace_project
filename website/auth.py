@@ -5,9 +5,8 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login')
 def home():
-	date = datetime.now()
-	return render_template('login.html', date=date)
+	return render_template('login.html')
 
 @auth.route('/signup')
 def signup():
-	return render_template('signup.html')
+	return render_template('signup.html', role="Patient", checked = "true")
