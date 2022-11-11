@@ -40,6 +40,7 @@ def signup():
 		role = request.form.get('role')
 		if role == 'Patient':
 			dob = request.form.get('dob')
+			scans = []
 		else:
 			nmc_number = request.form.get('nmcNumber')
 			practice_years = request.form.get('practice_years')

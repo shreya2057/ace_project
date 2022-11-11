@@ -16,7 +16,7 @@ class User(db.Model,UserMixin):
 class Patient(db.Model,UserMixin):
 	id = db.Column(db.Integer,primary_key=True)
 	dob = db.Column(db.String(20))
-	# scans = db.Column(db.ARRAY(db.String(300)))
+	scans = db.Column(db.ARRAY(db.String(300)))
 	user_id=db.Column(db.Integer,db.ForeignKey('user.id'))
 	user = db.relationship('User')
 
