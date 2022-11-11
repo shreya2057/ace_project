@@ -1,13 +1,14 @@
 from os import path
-from flask import Flask, render_template
+
+from flask import Flask
+
 
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'fagsdfbaisdfkbdjkgn'
-
-    @app.route('/')
-    def function():
-        return render_template('base.html')
-
+    from .auth import auth
+    from .views import views
+    app.register_blueprint(views,url_prefix='/')
+    app.register_blueprint(auth,url_prefix='/auth')
     return app
 
