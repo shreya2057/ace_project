@@ -23,35 +23,51 @@
             </span>
         </div>
         </div>
+        <div class="field is-grouped mt-4 mb-0">
         
-        <div class="field mt-4">
-            <label class="label has-text-link">Password</label>
-            <div class="control has-icons-left has-icons-right">
-                <input name="password1" class="input is-link" type="password" placeholder="Enter your password">
-                <span class="icon is-small is-left has-text-grey">
-                <i class="fa fa-lock"></i>
-                </span>
+            <div class="field pr-2">
+                <label class="label has-text-link">Password</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input name="password1" class="input is-link" type="password" placeholder="Enter your password">
+                    <span class="icon is-small is-left has-text-grey">
+                    <i class="fa fa-lock"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field pl-2">
+                <label class="label has-text-link">Confirm Password</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input name="password2" class="input is-link" type="password" placeholder="Confirm Your Password">
+                    <span class="icon is-small is-left has-text-grey">
+                    <i class="fa fa-lock"></i>
+                    </span>
+                </div>
             </div>
         </div>
-
-        <div class="field mt-4">
-            <label class="label has-text-link">Confirm Password</label>
-            <div class="control has-icons-left has-icons-right">
-                <input name="password2" class="input is-link" type="password" placeholder="Confirm Your Password">
-                <span class="icon is-small is-left has-text-grey">
-                <i class="fa fa-lock"></i>
-                </span>
+        <div class="field">
+            <label class="label has-text-link">Phone Number</label>
+            <div class="control">
+                <input name="phone" class="input is-link"  type="tel" placeholder="Phone Number">
             </div>
         </div>
-
-        <div class="field is-grouped mt-4">
-            <div class="field pr-3">
+        <div class="field is-grouped mt-4" >
+            <div class="field pr-1" id="dob">
                 <label class="label has-text-link">Date of Birth</label>
                 <div class="control">
                     <input name="dob" class="input is-link"  type="date" value="2018-07-22">
                 </div>
             </div>
-            <div class="field pl-3">
+
+            <div class="field pr-1"hidden id="nmc">
+                <label class="label has-text-link">NMC Number</label>
+                <div class="control">
+                    <input name="nmc_number" class="input is-link"  type="number" placeholder="NMC No">
+                </div>
+            </div>
+
+            <input type="text" value="{{role}}" id="roleValue" disabled hidden>
+            <div class="field pl-1">
                 <label class="label has-text-link">Gender</label>
                 <div class="control">
                 <div class="select">
@@ -61,16 +77,22 @@
                         <option value="Female">Female</option>
                     </select>
                 </div>
+                
                 </div>
             </div>
         </div>
-            
 
-        <div class="field mt-4">
-        <div class="control">
+        <div class="field mt-4 is-grouped">
+        <div class="control pr-4">
             <label class="checkbox">
             <input type="checkbox">
             I agree to the <a href="#">terms and conditions</a>
+            </label>
+        </div>
+        <div class="pl-4 ">
+            <label class="checkbox">
+            <input type="checkbox" id="role" value="{{checked}}" onchange="changeValue();">
+                <strong class="has-text-link">Signup as doctor</strong>
             </label>
         </div>
         </div>
@@ -82,6 +104,7 @@
         <div class="control">
             <button class="button is-link is-light">Cancel</button>
         </div>
+        
         </div>
     </form>
     <div class="column">
