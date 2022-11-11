@@ -22,3 +22,16 @@ function changeValue(){
 	  document.getElementById('docField').hidden = true
   }
 }
+
+const imgInput = document.getElementById('file')
+const imgEl = document.getElementById('preview')
+
+imgInput.addEventListener('change', () => {
+  if (imgInput.files && imgInput.files[0]) {
+    imgEl.src = URL.createObjectURL(imgInput.files[0]);
+    imgEl.onload = () => {
+      URL.revokeObjectURL(imgEl.src)
+    }
+	document.getElementById('preview').hidden = false
+  }
+})
