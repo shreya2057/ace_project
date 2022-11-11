@@ -1,0 +1,91 @@
+{% extends "base.html" %} {%block title%}Login{%endblock%}
+
+{% block content %}
+<div class="columns is-grouped m-0 p-0">
+    <form method="POST" class="column is-6 p-0">
+        <strong class="has-text-link is-size-3 has-text-centered">Sign Up</strong>
+        <div class="field mt-4">
+            <label class="label has-text-link">Full Name</label>
+            <div class="control has-icons-left has-icons-right">
+                <input name="name" class="input is-link" type="text" placeholder="Your Fullname">
+                <span class="icon is-small is-left has-text-grey">
+                <i class="fa fa-user"></i>
+                </span>
+            </div>
+            </div>
+
+        <div class="field mt-4">
+        <label class="label has-text-link">Email</label>
+        <div class="control has-icons-left has-icons-right">
+            <input name="email" class="input is-link" type="email" placeholder="someone@example.com">
+            <span class="icon is-small is-left has-text-grey">
+            <i class="fa fa-envelope"></i>
+            </span>
+        </div>
+        </div>
+        
+        <div class="field mt-4">
+            <label class="label has-text-link">Password</label>
+            <div class="control has-icons-left has-icons-right">
+                <input name="password1" class="input is-link" type="password" placeholder="Enter your password">
+                <span class="icon is-small is-left has-text-grey">
+                <i class="fa fa-lock"></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="field mt-4">
+            <label class="label has-text-link">Confirm Password</label>
+            <div class="control has-icons-left has-icons-right">
+                <input name="password2" class="input is-link" type="password" placeholder="Confirm Your Password">
+                <span class="icon is-small is-left has-text-grey">
+                <i class="fa fa-lock"></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="field is-grouped mt-4">
+            <div class="field pr-3">
+                <label class="label has-text-link">Date of Birth</label>
+                <div class="control">
+                    <input name="dob" class="input is-link"  type="date" value="2018-07-22">
+                </div>
+            </div>
+            <div class="field pl-3">
+                <label class="label has-text-link">Gender</label>
+                <div class="control">
+                <div class="select">
+                    <select name="gender" class="input is-link">
+                        <option value="" disabled selected>Select your option</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                </div>
+            </div>
+        </div>
+            
+
+        <div class="field mt-4">
+        <div class="control">
+            <label class="checkbox">
+            <input type="checkbox">
+            I agree to the <a href="#">terms and conditions</a>
+            </label>
+        </div>
+        </div>
+
+        <div class="field is-grouped mt-4">
+        <div class="control">
+            <button class="button is-link">Submit</button>
+        </div>
+        <div class="control">
+            <button class="button is-link is-light">Cancel</button>
+        </div>
+        </div>
+    </form>
+    <div class="column">
+        <img src="{{ url_for('static',filename='images/signup.jpg') }}" style="object-fit: cover; height: 100%;" alt="image">
+    </div>
+</div>
+{% endblock %}
