@@ -20,7 +20,7 @@ def login():
 				else:
 					loggedUser = Doctor.query.filter_by(user_id=user.id).first()
 				login_user(loggedUser,remember=True)
-				flash('Logged In Successfully.',category='success')
+				flash("Logged In Successfully.",category='success')
 				return redirect(url_for('views.home'))
 			else:
 				flash('Incorrect password.',category='error')
@@ -83,3 +83,8 @@ def signup():
 			return redirect(url_for('views.home'))
 	return render_template("signup.html",user=current_user)
 	
+@auth.route('/logout')
+@login_required
+def logout():
+	logout_user()
+	return redirect(url_for('auth.login'))

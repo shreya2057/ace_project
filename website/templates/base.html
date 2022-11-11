@@ -25,7 +25,7 @@
 			aria-label="main navigation"
 		>
 			<div class="navbar-brand">
-				<a class="navbar-item" href="https://bulma.io">
+				<a class="navbar-item" href="/">
 					<img
 						src="https://bulma.io/images/bulma-logo.png"
 						width="112"
@@ -58,12 +58,29 @@
 
 				<div class="navbar-end">
 					<div class="navbar-item">
-						<div class="buttons">
-							<a class="button is-primary" href="/auth/signup">
-								<strong>Sign up</strong>
+						{%if not user.is_authenticated%}
+						<div class="buttons has-text-weight-medium">
+							<a
+								class="button is-primary has-text-weight-medium"
+								href="/auth/signup"
+							>
+								Sign up
 							</a>
-							<a class="button is-light" href="/auth/login"> Log in </a>
+							<a
+								class="button is-light has-text-weight-medium"
+								href="/auth/login"
+							>
+								Log in
+							</a>
 						</div>
+						{%else%}
+						<a
+							class="button is-dark has-text-weight-medium"
+							href="/auth/logout"
+						>
+							Logout
+						</a>
+						{%endif%}
 					</div>
 				</div>
 			</div>
