@@ -11,8 +11,12 @@ function changeValue(){
 	if (document.getElementById('role').checked) 
   {
       document.getElementById('roleValue').value = "Doctor";
+	  document.getElementById('dob').hidden = true
+	  document.getElementById('nmc').hidden = false
   } 
   else{
 	document.getElementById('roleValue').value = "Patient";
+	document.getElementById('dob').hidden = false
+	  document.getElementById('nmc').hidden = true
   }
 }
