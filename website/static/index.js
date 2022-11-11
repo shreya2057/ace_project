@@ -13,10 +13,12 @@ function changeValue(){
       document.getElementById('roleValue').value = "Doctor";
 	  document.getElementById('dob').hidden = true
 	  document.getElementById('nmc').hidden = false
+	  document.getElementById('docField').hidden = false
   } 
   else{
 	document.getElementById('roleValue').value = "Patient";
 	document.getElementById('dob').hidden = false
 	  document.getElementById('nmc').hidden = true
+	  document.getElementById('docField').hidden = true
   }
 }

@@ -27,7 +27,7 @@
         
             <div class="field pr-2">
                 <label class="label has-text-link">Password</label>
-                <div class="control has-icons-left has-icons-right">
+                <div class="control has-icons-left">
                     <input name="password1" class="input is-link" type="password" placeholder="Enter your password">
                     <span class="icon is-small is-left has-text-grey">
                     <i class="fa fa-lock"></i>
@@ -37,7 +37,7 @@
 
             <div class="field pl-2">
                 <label class="label has-text-link">Confirm Password</label>
-                <div class="control has-icons-left has-icons-right">
+                <div class="control has-icons-left">
                     <input name="password2" class="input is-link" type="password" placeholder="Confirm Your Password">
                     <span class="icon is-small is-left has-text-grey">
                     <i class="fa fa-lock"></i>
@@ -47,8 +47,11 @@
         </div>
         <div class="field">
             <label class="label has-text-link">Phone Number</label>
-            <div class="control">
+            <div class="control has-icons-left">
                 <input name="phone" class="input is-link"  type="tel" placeholder="Phone Number">
+                <span class="icon is-small is-left has-text-grey">
+                    <i class="fa fa-phone"></i>
+                </span>
             </div>
         </div>
         <div class="field is-grouped mt-4" >
@@ -59,7 +62,7 @@
                 </div>
             </div>
 
-            <div class="field pr-1"hidden id="nmc">
+            <div class="field pr-1" hidden id="nmc">
                 <label class="label has-text-link">NMC Number</label>
                 <div class="control">
                     <input name="nmc_number" class="input is-link"  type="number" placeholder="NMC No">
@@ -81,15 +84,49 @@
                 </div>
             </div>
         </div>
+        <div class="block" hidden id="docField">
+            <div class="field">
+                <label class="label has-text-link has-icons-left">Expertise</label>
+                <div class="control has-icons-left">
+                    <input name="expertise" class="input is-link"  type="text" placeholder="Expertise">
+                    <span class="icon is-small is-left has-text-grey">
+                        <i class="fa fa-star"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label has-text-link">Qualification</label>
+                <div class="control has-icons-left">
+                    <input name="qualification" class="input is-link"  type="text" placeholder="Qualification">
+                    <span class="icon is-small is-left has-text-grey">
+                        <i class="fa fa-book"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="field is-grouped mt-4" >
+                <div class="field pr-1" >
+                    <label class="label has-text-link">Years of practice</label>
+                    <div class="control">
+                        <input name="year" class="input is-link"  type="text" placeholder="Experience">
+                    </div>
+                </div>
+                <div class="field pr-1" >
+                    <label class="label has-text-link">Hospital Name</label>
+                    <div class="control">
+                        <input name="hospital" class="input is-link"  type="text" placeholder="Hospital">
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="field mt-4 is-grouped">
         <div class="control pr-4">
             <label class="checkbox">
-            <input type="checkbox">
+            <input type="checkbox" required>
             I agree to the <a href="#">terms and conditions</a>
             </label>
         </div>
-        <div class="pl-4 ">
+        <div class="pl-4">
             <label class="checkbox">
             <input type="checkbox" id="role" value="{{checked}}" onchange="changeValue();">
                 <strong class="has-text-link">Signup as doctor</strong>
@@ -97,7 +134,7 @@
         </div>
         </div>
 
-        <div class="field is-grouped mt-4">
+        <div class="field is-grouped mt-4 mb-1">
         <div class="control">
             <button class="button is-link">Sign up</button>
         </div>
@@ -108,7 +145,7 @@
         </div>
     </form>
     <div class="column">
-        <img src="{{ url_for('static',filename='images/signup.jpg') }}" style="object-fit: cover; height: 100%;" alt="image">
+        <img src="{{ url_for('static',filename='images/signup.jpg') }}" alt="image">
     </div>
 </div>
 {% endblock %}
