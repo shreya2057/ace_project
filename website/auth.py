@@ -15,12 +15,11 @@ def login():
 		user = User.query.filter_by(email=email).first()
 		if user:
 			if check_password_hash(user.password, password):
-				flash('Logged in successfully',category='success') #message flash
 				if(user.role=='Patient'):
 					loggedUser = Patient.query.filter_by(user_id=user.id).first()
 				else:
 					loggedUser = Doctor.query.filter_by(user_id=user.id).first()
-				login_user(loggedUser)
+				login_user(loggedUser,remember=True)
 				flash('Logged In Successfully.',category='success')
 				return redirect(url_for('views.home'))
 			else:
@@ -67,14 +66,18 @@ def signup():
 			new_user = User(name=name, email=email, password =generate_password_hash(password1,method='sha256'),gender =gender,phone =phone,role =role)
 			db.session.add(new_user)
 			db.session.commit()
-			if(role == 'Patient'):
+			if role == 'Patient':
 				new_patient = Patient(dob = dob, user_id = new_user.id)
 				db.session.add(new_patient)
 			else:
 				new_doctor=Doctor(nmc_number = nmc_number,practice_years=practice_years,expertise=expertise,hospital=hospital,qualification=qualification, user_id = new_user.id)
 				db.session.add(new_doctor)
 			db.session.commit()
-			login_user(new_patient,remember=True)
+			if(new_user.role=='Patient'):
+				loggedUser = Patient.query.filter_by(user_id=new_user.id).first()
+			else:
+				loggedUser = Doctor.query.filter_by(user_id=new_user.id).first()
+			login_user(loggedUser,remember=True)
 			flash('Signed Up Successfully.',category='success')
 
 			return redirect(url_for('views.home'))
