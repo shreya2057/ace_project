@@ -1,9 +1,14 @@
 {% extends "base.html" %} {%block title%}Home{%endblock%} {%block content%}
-<section class="hero homepage-image">
-	<img
-		src="{{ url_for('static',filename='images/home2.webp') }}"
-		class="home-image"
-		alt="HomePage Image"
-	/>
-</section>
+<div class="flex">
+	<section class="hero homepage-image">
+		<img
+			src="{{ url_for('static',filename='images/home2.webp') }}"
+			class="home-image"
+			alt="HomePage Image"
+		/>
+	</section>
+	<input type="button" id ="fileUpload" value="Add Scan +" class="button is-pulled-right mt-3 is-primary" onclick="document.getElementById('file').click();" />
+	<input type="file" style="display:none;" id="file" name="file" accept="image/*"/>
+	<img id="preview" src="#" alt="your image" hidden/>
+</div>
 {%endblock%}
