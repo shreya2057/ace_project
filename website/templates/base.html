@@ -126,19 +126,19 @@
 		</div>
 		<button class="modal-close is-large" aria-label="close"></button>
 		<!-- Flash Message -->
-		<div>
+		<div id="flash">
 		{%with messages = get_flashed_messages(with_categories=true)%} {% if
 		messages %} {%for category,message in messages%} {% if category=='error' %}
 		<div class="box flash-message has-background-danger mt-3 ml-6 mr-6" role="alert">
 			{{message}}
-			<button class="close pull-right" type="button" data-dismiss="alert">
+			<button class="close pull-right" type="button" data-dismiss="alert" onclick="hideMessage();">
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
 		{%else%}
 		<div class="box flash-message has-background-primary mt-3 ml-6 mr-6" role="alert">
 			{{message}}
-			<button class="close pull-right" type="button" data-dismiss="alert" onclick="hide()">
+			<button class="close pull-right" type="button" data-dismiss="alert" onclick="hideMessage();">
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>

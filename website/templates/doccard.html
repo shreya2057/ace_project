@@ -1,7 +1,26 @@
 {% extends "base.html" %} {%block title%}Doctors List{%endblock%}
 
 {% block content %}
-<div class="box mt-6 pl-6 pr-6" id="card" onclick="getDoctor()">
+
+<div class="container mt-4">
+  <div class="field is-grouped">
+    <p class="control is-expanded has-icons-left">
+      <input class="input" type="text" placeholder="Enter the location">
+      <span class="icon is-small is-left has-text-grey">
+        <i class="fa fa-map-marker"></i>
+      </span>
+    </p>
+    <p class="control">
+      <a class="button is-info">
+        Search
+      </a>
+    </p>
+  </div>
+
+{%for doctor in doctors%}
+
+
+<div class="box mt-6 pl-6 pr-6" id="card" onclick="getDoctor(doctor.id)">
     <article class="media mt-2">
       <div class="media-left">
         <figure class="image is-128x128 is-rounded">
@@ -11,15 +30,19 @@
       <div class="media-content">
         <div class="content">
           <p>
-            <strong class="is-size-5 m-1">Dr John Smith</strong> 
+            <strong class="is-size-5 m-1">{{doctor.name}}</strong> 
             <br>
-            <small class="has-text-grey m-1">johnsmith@gmail.com</small> 
+            <small class="has-text-grey m-1">{{doctor.email}}</small> 
             <br>
-            <span class="m-1 has-text-grey">Qualification: MBBS Ortho</span>
-            <br>
-            <span class="m-1 has-text-grey">Year of experience: 11</span>
-            <br>
-            <span class="m-1 has-text-grey">NMC Number: 2008</span>
+            {%for docDetail in docDetails%}
+              {%if doctor.id == docDetail.id%}
+                <span class="m-1 has-text-grey">Qualification: {{docDetail.qualification}}</span>
+                <br>
+                <span class="m-1 has-text-grey">Year of experience: {{docDetail.practice_years}}</span>
+                <br>
+                <span class="m-1 has-text-grey">NMC Number: {{docDetail.nmc_number}}</span>
+              {%endif%}
+            {%endfor%}
 
           </p>
         </div>
@@ -31,65 +54,47 @@
                   <img src="{{ url_for('static',filename='images/hospital.jpg') }}" alt="Image">
                 </figure>
               </div>
+              {%for docDetail in docDetails%}
+                {%if doctor.id == docDetail.id%}
               <div class="media-content m-1 mt-2">
                 <div class="content">
                   <p>
-                    <strong class="is-size-6 m-1">Xyz Hospital</strong> 
-                    <br>
-                    <small class="has-text-grey m-1">Kathmandu, Nepal</small> 
-        
+                    
+                      <strong class="is-size-6 m-1">{{docDetail.hospital}}</strong> 
+                      <br>
+                      <small class="has-text-grey m-1">Kathmandu, Nepal</small> 
+                    
+
                   </p>
         
                 </div>
+                <div class="content">
+                  <strong class="is-size-6">Specialization</strong>
+                  <br>
+                  <span class="icon is-left has-text-primary">
+                      <i class="fa fa-thermometer"></i>
+                  </span>
+                  <span class="is-size-6">{{docDetail.expertise}}</span>
               </div>
+              </div>
+
+              {%endif%}
+              {%endfor%}
   
           </div>
+          
     </article>
+    <div class="content m-1">
+        
+      <div class="control mt-4">
+          <button class="button is-primary"><strong>Book an appointment</strong></button>
+      </div>
+    </div>
       </div>
 
-      <div class="box mt-6 pl-6 pr-6" id="card" onclick="getDoctor()">
-        <article class="media mt-2">
-          <div class="media-left">
-            <figure class="image is-128x128 is-rounded">
-              <img src="{{ url_for('static',filename='images/doctorProfile.jpg') }}" alt="Image">
-            </figure>
-          </div>
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <strong class="is-size-5 m-1">Dr Divyanka Pradhan</strong> 
-                <br>
-                <small class="has-text-grey m-1">divyanka@gmail.com</small> 
-                <br>
-                <span class="m-1 has-text-grey">Qualification: MBBS General Medicine</span>
-                <br>
-                <span class="m-1 has-text-grey">Year of experience: 6</span>
-                <br>
-                <span class="m-1 has-text-grey">NMC Number: 3005</span>
-    
-              </p>
-            </div>
-    
-            </div>
-            <div class="media m-1" style="border: none">
-                <div class="media-left m-1">
-                    <figure class="image is-48x48 is-rounded mt-2">
-                      <img src="{{ url_for('static',filename='images/hospital.jpg') }}" alt="Image">
-                    </figure>
-                  </div>
-                  <div class="media-content m-1 mt-2">
-                    <div class="content">
-                      <p>
-                        <strong class="is-size-6 m-1">Bir Hospital</strong> 
-                        <br>
-                        <small class="has-text-grey m-1">Kathmandu, Nepal</small> 
-            
-                      </p>
-            
-                    </div>
-                  </div>
+
+      {%endfor%}
+
       
-              </div>
-        </article>
-          </div>
+</div>
 {% endblock %}
