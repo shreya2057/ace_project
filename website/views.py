@@ -11,7 +11,7 @@ from .models import Doctor, Patient, Scan
 
 views = Blueprint('views', __name__)
 tb_model = pickle.load(open('TB.pkl','rb'))
-pneumonia_model = pickle.load(open('PN.pkl','rb'))
+pneumonia_model = pickle.load(open('TB.pkl','rb'))
 tumor_model = pickle.load(open('tumor.pkl','rb'))
 @views.route('/')
 def home():
@@ -39,19 +39,16 @@ def upload_scan():
 			db.session.commit()
 			pred = prediction(type, image)
 			flash('Scan successfully uploaded.',category='success')
-	return redirect(url_for('views.home'),data=pred)
+	return redirect(url_for('views.home'))
 
 def prediction(type, image):
-	if type=='Tuberculosis':
-		flash('TB')
+	if type=='tc':
 		pred = tb_model.predict(image)
-	elif type=='Brain Tumor':
-		flash('tumor')
+	elif type=='bt':
 		pred = tumor_model.predit(image)
-	elif type=='Penumonia':
-		flash('pneumonia')
+	elif type=='pn':
 		pred = pneumonia_model(image)
-	return pred
+	return 'pred'
 
 def upload_image(image,type):
 	filename=f'{type}-{current_user.name}-{datetime.datetime.now()}{os.path.splitext(image.filename)[1]}'
