@@ -28,11 +28,11 @@
 				<a class="navbar-item" href="/">
 					<img
 						src="../static/images/aashirwaad logo.jpg"
-						width="50"
-						height="15"
+						width="40"
+						height="20"
+						class=" pr-1"
 					/>
 					<span class="has-text-weight-bold is-size-5 has-text-link">Aashirbaad</span>
-
 				</a>
 				<a
 					role="button"
@@ -50,7 +50,14 @@
 			<div id="navbarBasicExample" class="navbar-menu">
 				<div class="navbar-start">
 					<a class="navbar-item" href="/"> Home </a>
-
+					
+					{%if user.is_authenticated%}
+					{% if user.role=='Patient'%}
+					<a class="navbar-item" href="/patientProfile">Profile</a>
+					{%else%}
+					<a class="navbar-item" href="/docprofile">Profile</a>
+					{%endif%}
+					{%endif%}
 					<a class="navbar-item" href="/doccard"> Doctors </a>
 					<!-- Button to add the scan -->
 					{%if user.is_authenticated and user.role=='Patient'%}
