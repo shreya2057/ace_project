@@ -1,11 +1,14 @@
 import datetime
 import os
+import pathlib
 import pickle as pkl
 
 import numpy as np
+import PIL
 import tensorflow as tf
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
+from PIL import Image
 from tensorflow import keras
 from tensorflow.keras.preprocessing import image
 from werkzeug.utils import secure_filename
@@ -14,15 +17,10 @@ from . import app, db
 from .models import Doctor, Patient, Scan, User
 
 views = Blueprint('views', __name__)
-class_names = ['a','b','c','d']
-tf.saved_model.LoadOptions(
-    allow_partial_checkpoint=False,
-    experimental_io_device='/job:localhost',
-    experimental_skip_checkpoint=False,
-    experimental_variable_policy=None
-)
+class_names = ['Glioma','Meningioma','No_Tumor','Pituitary']
 
-model =pkl.load(open("tumour.pkl", "rb"))
+
+model =tf.keras.models.load_model("TUMOR.h5")
 
 
 def test_on_image(img_path):
@@ -37,21 +35,6 @@ def test_on_image(img_path):
 @views.route('/')
 def home():
 	return render_template('home.html',user=current_user)
-
-def upload():
-		# Get the file from post request
-		f = request.files['file']
-
-		# Save the file to ./uploads
-		basepath = os.path.dirname(__file__)
-		file_path = os.path.join(
-				basepath, 'uploads', secure_filename(f.filename))
-		f.save(file_path)
-
-		preds = test_on_image(file_path)
-		
-		return preds
-		return None
 
 @views.route('/docprofile')
 def profile():
@@ -79,16 +62,21 @@ def upload_scan():
 			image = request.files['scan']
 			# filename=f'scan-{current_user.name}-{datetime.datetime.now()}{os.path.splitext(image.filename)[1]}'
 			# image.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['SCAN_UPLOAD'],secure_filename(filename)))
-			uri = upload_image(image, 'scan')
-			preds = test_on_image(uri)
+			# uri = upload_image(image, 'scan')
+			basepath = os.path.dirname(__file__)
+			file_path=os.path.join(basepath,app.config['SCAN_UPLOAD'],secure_filename(image.filename))
+			image.save(file_path)
+			preds = test_on_image(file_path)
 			print(preds)
-			new_scan = Scan(uri=uri,user_id=current_user.id)
-			flash('Scan successfully uploaded.',category='success')
+			# new_scan = Scan(uri=uri,user_id=current_user.id)
+			flash(f'Scan successfully uploaded. {preds}',category='success')
 	return redirect(url_for('views.home'))
 
-def upload_image(image,type):
-	filename=f'{type}-{current_user.name}-{datetime.datetime.now()}{os.path.splitext(image.filename)[1]}'
-	image.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['SCAN_UPLOAD'],secure_filename(filename)))
-	return f'{app.config["SCAN_UPLOAD"]}/{filename}'
-
+# def upload_image(image,type):
+# 	filename=f'{type}-{current_user.name}-{datetime.datetime.now()}{os.path.splitext(image.filename)[1]}'
+# 	image.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['SCAN_UPLOAD'],secure_filename(filename)))
+# 	# return f'{app.config["SCAN_UPLOAD"]}/{filename}'
+# 	strin = app.config["SCAN_UPLOAD"]+'/'+filename
+# 	x=strin.replace('/', '\\')
+# 	return x
 
