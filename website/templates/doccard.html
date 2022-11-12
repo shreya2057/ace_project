@@ -1,0 +1,49 @@
+{% extends "base.html" %} {%block title%}Doctors List{%endblock%}
+
+{% block content %}
+<div class="box mt-6 pl-6 pr-6">
+    <article class="media mt-2">
+      <div class="media-left">
+        <figure class="image is-128x128 is-rounded">
+          <img src="{{ url_for('static',filename='images/doctorProfile.jpg') }}" alt="Image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong class="is-size-5 m-1">Dr John Smith</strong> 
+            <br>
+            <small class="has-text-grey m-1">johnsmith@gmail.com</small> 
+            <br>
+            <span class="m-1 has-text-grey">Qualification: MBBS Ortho</span>
+            <br>
+            <span class="m-1 has-text-grey">Year of experience: 11</span>
+            <br>
+            <span class="m-1 has-text-grey">NMC Number: 2008</span>
+
+          </p>
+        </div>
+
+        </div>
+        <div class="media m-1">
+            <div class="media-left m-1">
+                <figure class="image is-48x48 is-rounded mt-2">
+                  <img src="{{ url_for('static',filename='images/hospital.jpg') }}" alt="Image">
+                </figure>
+              </div>
+              <div class="media-content m-1 mt-2">
+                <div class="content">
+                  <p>
+                    <strong class="is-size-6 m-1">Xyz Hospital</strong> 
+                    <br>
+                    <small class="has-text-grey m-1">Kathmandu, Nepal</small> 
+        
+                  </p>
+        
+                </div>
+              </div>
+  
+          </div>
+    </article>
+      </div>
+{% endblock %}

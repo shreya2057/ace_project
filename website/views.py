@@ -18,6 +18,10 @@ def home():
 def profile():
 	return render_template('docprofile.html',user=current_user)
 
+@views.route('/doccard')
+def card():
+	return render_template('doccard.html',user=current_user)
+
 app.config['SCAN_UPLOAD'] = 'static/images/uploads/scans'
 
 @views.route('/upload-scan',methods=['POST'])
