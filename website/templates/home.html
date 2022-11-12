@@ -1,11 +1,36 @@
 {% extends "base.html" %} {%block title%}Home{%endblock%} {%block content%}
 <div class="flex">
-	<section class="hero homepage-image">
+	<section class="hero homepage-image" style="position:relative">
 		<img
 			src="{{ url_for('static',filename='images/home2.webp') }}"
 			class="home-image"
 			alt="HomePage Image"
 		/>
+		<div style="position: absolute; bottom: 25%; left: 5%;">
+			<span class="is-size-2 has-text-weight-bold has-text-link">Aashirbaad</span>
+			<br>
+			<span class="is-size-5 has-text-weight-medium has-text-link">AI-based health care service provider</span>
+		</div>
+	</section>
+
+	<section id="about ">
+		<div class="columns">
+		<div class="column is-one-third mt-6 ml-6 has-text-end">
+		<div class="is-size-3 has-text-weight-bold has-text-centered"> Our Motive </div>
+		<hr style="color: 50%">
+		<div class="is-size-5 has-text-centered">
+			Around 22% of people living in Nepal are deprived of basic health facility leading towards increased in mortality rate due to undiagnosis of diseases.
+			This has been a serious issue concering the health of people leaving in rural areas. Focusing on easing the life of people and facilitating the people with health service has been our motive.
+		</div>
+		</div>
+		<div class="column is-one-fifth">
+		  </div>
+		<div class="column is-one-third">
+			<figure class="image">
+			  <img src="{{ url_for('static',filename='images/signup.jpg') }}" height="100px" alt="Image">
+			</figure>
+		  </div>
+	</div>
 	</section>
 </div>
 {%endblock%}
