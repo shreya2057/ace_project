@@ -49,7 +49,7 @@
 				<div class="navbar-start">
 					<a class="navbar-item" href="/"> Home </a>
 
-					<a class="navbar-item"> Doctors </a>
+					<a class="navbar-item" href="/doccard"> Doctors </a>
 					<!-- Button to add the scan -->
 					{%if user.is_authenticated and user.role=='Patient'%}
 					<div class="buttons pl-2">
@@ -126,7 +126,11 @@
 		</div>
 		<button class="modal-close is-large" aria-label="close"></button>
 		<!-- Flash Message -->
+<<<<<<< HEAD
+		<div class="mt-3 ml-6 mr-6" id="flash">
+=======
 		<div>
+>>>>>>> 8b2825ad5917d742125be920ec798b2f01a6e69c
 		{%with messages = get_flashed_messages(with_categories=true)%} {% if
 		messages %} {%for category,message in messages%} {% if category=='error' %}
 		<div class="box flash-message has-background-danger mt-3 ml-6 mr-6" role="alert">
@@ -136,9 +140,13 @@
 			</button>
 		</div>
 		{%else%}
+<<<<<<< HEAD
+		<div id="flash" class="box flash-message has-background-primary" role="alert">
+=======
 		<div class="box flash-message has-background-primary mt-3 ml-6 mr-6" role="alert">
+>>>>>>> 8b2825ad5917d742125be920ec798b2f01a6e69c
 			{{message}}
-			<button class="close pull-right" type="button" data-dismiss="alert">
+			<button class="close pull-right" type="button" data-dismiss="alert" onclick="hide()">
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>

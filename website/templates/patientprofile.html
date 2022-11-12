@@ -1,0 +1,66 @@
+{% extends "base.html" %} {%block title%}{{user.name}}{%endblock%} {% block content %}
+    <div class="box m-3">
+        <article class="box m-6" style="background-color: rgb(233, 233, 233)">
+            <div class="media pl-6>
+                <div class="media-content">
+                <div class="content">
+                    <p>
+                    <div><strong class="is-size-5 m-1">{{user.name}}</strong></div>
+                    <div class="is-size-6 m-1 mt-0 has-text-grey"> <strong class="has-text-grey">ContactNo: </strong> {{user.phone}}</div>
+                    <div class="is-size-6 m-1 has-text-grey"> <strong class="has-text-grey">DOB: </strong> {{patient.dob}}</div>
+                    <div class="is-size-6 m-1 has-text-grey"> <strong class="has-text-grey">Gender: </strong> {{user.gender}}</div> 
+        
+                    </p>
+        
+                </div>
+                </div>
+                <div class="media-right mr-3 mt-3">
+                <div class="content">
+                    <p>
+                    <small class="has-text-grey m-1">{{user.email}}</small>  
+        
+                    </p>
+        
+                </div>
+                </div>
+            </div>
+        </article>
+        <div class="m-1 mt-6">
+            <strong class="is-size-4">Diagnosis History</strong>
+            
+            <article class="media mt-6">
+                <div class="media-content m-1">
+                    <div class="content">
+                    <img src="{{ url_for('static',filename='images/x-ray.jpg') }}" width="250px" height="500px" style="object-fit: contain;">
+                    <p>     
+                            <small class="has-text-grey m-1"><b>Scanned date: </b>{{patient.dob}}</small>
+                            <br>
+                            <strong class="is-size-6 m-1">Diagnosis: </strong><span>result</span>
+                            <br>
+            
+                    </p>
+            
+                    </div>
+                </div>
+                </article>
+
+                <article class="media mt-3">
+                <div class="media-content m-1">
+                    <div class="content">
+                    <img src="{{ url_for('static',filename='images/ctt.jpg') }}" width="250px" height="500px" style="object-fit: contain;">
+                    <p>     
+                            <small class="has-text-grey m-1"><b>Scanned date: </b>{{patient.dob}}</small>
+                            <br>
+                            <strong class="is-size-6 m-1">Diagnosis: </strong><span>result</span>
+                            <br>
+            
+                    </p>
+            
+                    </div>
+                </div>
+                </article>
+                
+        </div>
+        
+    </div>
+{% endblock %}
