@@ -49,20 +49,21 @@
 
 			<div id="navbarBasicExample" class="navbar-menu">
 				<div class="navbar-start">
-					<a class="navbar-item" href="/"> Home </a>
+					<a class="navbar-item has-text-weight-medium" href="/"> Home </a>
 					
 					{%if user.is_authenticated%}
 					{% if user.role=='Patient'%}
-					<a class="navbar-item" href="/patientProfile">Profile</a>
+					<a class="navbar-item has-text-weight-medium" href="/patientProfile">Profile</a>
 					{%else%}
-					<a class="navbar-item" href="/docprofile">Profile</a>
+					<a class="navbar-item has-text-weight-medium" href="/docprofile">Profile</a>
 					{%endif%}
 					{%endif%}
-					<a class="navbar-item" href="/doccard"> Doctors </a>
+					<a class="navbar-item has-text-weight-medium" href="/doccard"> Doctors </a>
+					<a href="#about-us" class="navbar-item has-text-weight-medium">About Us</a>
 					<!-- Button to add the scan -->
 					{%if user.is_authenticated and user.role=='Patient'%}
 					<div class="buttons pl-2">
-							<button class="navbar-item button is-primary is-outlined js-modal-trigger" data-target="modal-js-example">Review Scan</button></div>
+							<button class="navbar-item button is-primary is-outlined has-text-weight-medium js-modal-trigger" data-target="modal-js-example">Review Scan</button></div>
 					{%endif%}
 					</div>
 

@@ -1,11 +1,12 @@
 {% extends "base.html" %} {%block title%}{{user.name}}{%endblock%} {% block content %}
     <div class="box m-3">
         <article class="box m-6" style="background-color: rgb(233, 233, 233)">
-            <div class="media pl-6>
-                <div class="media-content">
-                <div class="content">
+            <div class="media pl-6">
+                <div class="columns media-content">
+                <div class="column content">
                     <p>
                     <div><strong class="is-size-5 m-1">{{user.name}}</strong></div>
+                    <div class="is-size-6 m-1 has-text-grey"> <strong class="has-text-grey">Email: </strong> {{user.email}}</div> 
                     <div class="is-size-6 m-1 mt-0 has-text-grey"> <strong class="has-text-grey">ContactNo: </strong> {{user.phone}}</div>
                     <div class="is-size-6 m-1 has-text-grey"> <strong class="has-text-grey">DOB: </strong> {{patient.dob}}</div>
                     <div class="is-size-6 m-1 has-text-grey"> <strong class="has-text-grey">Gender: </strong> {{user.gender}}</div> 
@@ -13,14 +14,19 @@
                     </p>
         
                 </div>
-                </div>
-                <div class="media-right mr-3 mt-3">
-                <div class="content">
-                    <p>
-                    <small class="has-text-grey m-1">{{user.email}}</small>  
-        
-                    </p>
-        
+
+                <div class="column is-centered">
+                    <h3 class='has-text-weight-bold is-size-5'>Subscriptions:</h3>
+                    <hr class="m-4">
+                    <div class="">
+                    <p class="p-1 has-text-centered has-text-grey">Individual packages (1X)</p>
+                    <div class="button is-info p-5 mr-2" style="width: 200px;" >Monthly Subscription <br> Nrs. 499</div>
+                    <div class="button is-info p-5" style="width: 200px;">Family Package <br> Nrs. 799</div>
+                    </div><div><p class="p-1 has-text-centered has-text-grey">Family packages (4X)</p>
+                    <div class="button is-info p-5 mr-2" style="width: 200px;">Monthly Subscription <br> NRs. 1999</div>
+                    <div class="button is-info p-5" style="width: 200px;">Family Package<br> NRs. 3499</div>
+                    </div><div class="flex"><p class="p-1 has-text-centered has-text-grey">Recommended packages (50% Discount for 6 months)</p>
+                    <div class="button is-info p-5" style="width: 200px;">Discounted Package <br> NRs. 999</div></div>
                 </div>
                 </div>
             </div>
