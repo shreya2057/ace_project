@@ -30,7 +30,13 @@ def patient():
 
 @views.route('/doccard')
 def card():
-	return render_template('doccard.html',user=current_user)
+	allusers = User.query.all()
+	doctors = []
+	for users in allusers:
+		if users.role == "Doctor":
+			doctors.append(users)
+	docDetails = Doctor.query.all()
+	return render_template('doccard.html',user=current_user, doctors=doctors, docDetails=docDetails)
 
 app.config['SCAN_UPLOAD'] = 'static/images/uploads/scans'
 
