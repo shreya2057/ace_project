@@ -38,6 +38,20 @@ imgInput.addEventListener("change", () => {
 		document.getElementById("upload").className = "box has-text-centered";
 	}
 });
+const licenseInput = document.getElementById("license");
+const imgLicense = document.getElementById("preview_license");
+
+licenseInput.addEventListener("change", () => {
+	if (licenseInput.files && licenseInput.files[0]) {
+		imgLicense.src = URL.createObjectURL(licenseInput.files[0]);
+		imgLicense.onload = () => {
+			URL.revokeObjectURL(imgLicense.src);
+		};
+		document.getElementById("upload_license").hidden = false;
+		document.getElementById("upload_license").className =
+			"box has-text-centered";
+	}
+});
 
 // Modal popUp
 

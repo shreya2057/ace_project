@@ -31,7 +31,7 @@ class Patient(db.Model,UserMixin):
 class Doctor(db.Model, UserMixin):
 	# id = db.Column(db.Integer,primary_key=True)
 	id=db.Column(db.Integer,db.ForeignKey('user.id'),primary_key=True)
-	# license = db.Column(db.String(300))
+	license = db.Column(db.String(300),nullable=True)
 	nmc_number = db.Column(db.BigInteger)
 	practice_years = db.Column(db.Integer)
 	expertise = db.Column(db.String(200))

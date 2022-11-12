@@ -8,3 +8,14 @@
 	height: 500px;
 	width: 100%;
 }
+.box#upload_license{
+	padding: 0;
+	margin-bottom: 0;
+}
+.flex-parent {
+	display: flex;
+}
+
+.jc-center {
+	justify-content: center;
+}

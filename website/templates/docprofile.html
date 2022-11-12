@@ -1,66 +1,129 @@
-{% extends "base.html" %} {%block title%}Profile{%endblock%}
-
-{% block content %}
+{% extends "base.html" %} {%block title%}{{doctor.user.name}}{%endblock%} {%
+block content %}
 <div class="box mt-6 pl-6 pr-6">
-    <article class="media mt-2">
-      <div class="media-left">
-        <figure class="image is-128x128 is-rounded">
-          <img src="{{ url_for('static',filename='images/doctorProfile.jpg') }}" alt="Image">
-        </figure>
-      </div>
-      <div class="media-content">
-        <div class="content">
-          <p>
-            <strong class="is-size-5 m-1">Dr John Smith</strong> 
-            <br>
-            <small class="has-text-grey m-1">johnsmith@gmail.com</small> 
-            <br>
-            <span class="m-1 has-text-grey">Qualification: MBBS Ortho</span>
-            <br>
-            <span class="m-1 has-text-grey">Year of experience: 11</span>
-            <br>
-            <span class="m-1 has-text-grey">NMC Number: 2008</span>
-
-          </p>
-
-        </div>
-      </div>
-      <div class="media-right m-1">
-        
-        <div class="control mt-4">
-            <button class="button is-primary"><strong>Book an appointment</strong></button>
-        </div>
-      </div>
-    </article>
-    <div class="m-5">
-        <strong class="is-size-4">Hospital</strong>
-        <article class="media">
-            <div class="media-left m-1">
-              <figure class="image is-48x48 is-rounded mt-2">
-                <img src="{{ url_for('static',filename='images/hospital.jpg') }}" alt="Image">
-              </figure>
-            </div>
-            <div class="media-content m-1 mt-2">
-              <div class="content">
-                <p>
-                  <strong class="is-size-6 m-1">Xyz Hospital</strong> 
-                  <br>
-                  <small class="has-text-grey m-1">Kathmandu, Nepal</small> 
-      
-                </p>
-      
-              </div>
-            </div>
-          </article>
-          
-    </div>
-    <div class="m-5">
-        <strong class="is-size-4">Specialization</strong>
-        <br>
-        <span class="icon is-left has-text-primary">
-            <i class="fa fa-thermometer"></i>
-        </span>
-        <span class="is-size-5">Orthopedics</span>
-    </div>
-  </div>
-{% endblock %}
+	<article class="media mt-2">
+		<div class="media-left">
+			<figure class="image is-128x128 is-rounded">
+				<img
+					src="{{ url_for('static',filename='images/doctorProfile.jpg') }}"
+					alt="Image"
+				/>
+			</figure>
+		</div>
+		<div class="media-content">
+			<div class="content">
+				<p>
+					<strong class="is-size-5 m-1">{{doctor.user.name}}</strong>
+					<br />
+					<small class="has-text-grey m-1">{{doctor.user.gmail}}</small>
+					<br />
+					<span class="m-1 has-text-grey"
+						>Qualification: {{doctor.qualification}}</span
+					>
+					<br />
+					<span class="m-1 has-text-grey"
+						>Year of experience: {{doctor.practice_years}}</span
+					>
+					<br />
+					<span class="m-1 has-text-grey"
+						>NMC Number: {{doctor.nmc_number}}</span
+					>
+				</p>
+			</div>
+		</div>
+		<div class="media-right m-1">
+			<div class="control mt-4">
+				<button class="button is-primary">
+					<strong>Book an appointment</strong>
+				</button>
+			</div>
+		</div>
+	</article>
+	<div class="m-5">
+		<strong class="is-size-4">Hospital</strong>
+		<article class="media">
+			<div class="media-left m-1">
+				<figure class="image is-48x48 is-rounded mt-2">
+					<img
+						src="{{ url_for('static',filename='images/hospital.jpg') }}"
+						alt="Image"
+					/>
+				</figure>
+			</div>
+			<div class="media-content m-1 mt-2">
+				<div class="content">
+					<p>
+						<strong class="is-size-6 m-1">Xyz Hospital</strong>
+						<br />
+						<small class="has-text-grey m-1">Kathmandu, Nepal</small>
+					</p>
+				</div>
+			</div>
+		</article>
+	</div>
+	<div class="m-5">
+		<strong class="is-size-4">Specialization</strong>
+		<br />
+		<span class="icon is-left has-text-primary">
+			<i class="fa fa-thermometer"></i>
+		</span>
+		<span class="is-size-5">{{doctor.expertise}}</span>
+	</div>
+</div>
+{%if is_current%}
+<div class="box mt-6 pl-6 pr-6">
+	<article class="media mt-2">
+		<div class="media-content">
+			<form
+				class="p-5"
+				action="/upload-license"
+				method="post"
+				enctype="multipart/form-data"
+			>
+				<div class="columns level">
+					<div class="column is-three-quarters">
+						<span class="has-text-link ml-5 is-size-5 has-text-weight-semibold"
+							>Upload your scan</span
+						>
+						<div class="notification mb-0 ml-5 pl-0 is-white">
+							Select an image of your license.
+						</div>
+					</div>
+					<!-- <form  action="/upload-scan" method="post" enctype="multipart/form-data"> -->
+					<div class="column pull-right has-text-centered">
+						<input
+							type="button"
+							id="fileUpload"
+							value="Select your scan"
+							class="button is-link ml-5 mr-5 mt-0 mb-3"
+							onclick="document.getElementById('license').click();"
+						/>
+						<input
+							type="file"
+							style="display: none"
+							id="license"
+							name="license"
+							accept="image/*"
+						/>
+					</div>
+				</div>
+				<div id="upload_license" style="box-shadow: none" hidden>
+					<img
+						id="preview_license"
+						src="#"
+						width="500px"
+						height="500px"
+						style="object-fit: contain"
+						alt="your image"
+					/>
+				</div>
+				<br />
+				<div class="flex-parent jc-center">
+					<button class="button is-link" type="submit">Upload</button>
+				</div>
+				<!-- </form> -->
+			</form>
+		</div>
+	</article>
+</div>
+{%endif%} {% endblock %}

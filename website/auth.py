@@ -1,3 +1,5 @@
+import json
+
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required, login_user, logout_user
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -12,13 +14,13 @@ def login():
 	if request.method == 'POST':
 		email = request.form.get('email')
 		password = request.form.get('password')
-		user = User.query.filter_by(email=email).first()
-		if user:
-			if check_password_hash(user.password, password):
-				if(user.role=='Patient'):
-					loggedUser = Patient.query.filter_by(id=user.id).first()
+		ex_user = User.query.filter_by(email=email).first()
+		if ex_user:
+			if check_password_hash(ex_user.password, password):
+				if(ex_user.role=='Patient'):
+					loggedUser = Patient.query.filter_by(id=ex_user.id).first()
 				else:
-					loggedUser = Doctor.query.filter_by(id=user.id).first()
+					loggedUser = Doctor.query.filter_by(id=ex_user.id).first()
 				login_user(loggedUser,remember=True)
 				flash("Logged In Successfully.",category='success')
 				return redirect(url_for('views.home'))
@@ -41,7 +43,7 @@ def signup():
 		if role == 'Patient':
 			dob = request.form.get('dob')
 		else:
-			nmc_number = request.form.get('nmcNumber')
+			nmc_number = request.form.get('nmc_number')
 			practice_years = request.form.get('practice_years')
 			expertise =request.form.get('expertise')
 			hospital =request.form.get('hospital')
