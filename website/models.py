@@ -8,6 +8,7 @@ class Scan(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	scanned_date=db.Column(db.DateTime(timezone=True),default=func.now())
 	uri=db.Column(db.String(300))
+	type = db.Column(db.String(50))
 	user_id = db.Column(db.Integer,db.ForeignKey('patient.id'))
 	result = db.Column(db.String(100))
 
