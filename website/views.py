@@ -24,6 +24,10 @@ def docprofile():
 	# print(current_user.user.name,current_user.user.email,current_user.dob)
 	return render_template('docprofile.html',user=current_user,doctor=doctor, is_current=is_current)
 
+@views.route('/doccard')
+def card():
+	return render_template('doccard.html',user=current_user)
+
 app.config['SCAN_UPLOAD'] = 'static/images/uploads/scans'
 app.config['LICENSE_UPLOAD'] = 'static/images/uploads/license'
 

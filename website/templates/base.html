@@ -18,7 +18,7 @@
 		/>
 		<title>{%block title%}Home{%endblock%}</title>
 	</head>
-	<body class="has-navbar-fixed-top">
+	<body class="hero has-navbar-fixed-top is-fullheight" style="height: 100vh; width: 100%;">
 		<nav
 			class="navbar is-fixed-top"
 			role="navigation"
@@ -126,6 +126,109 @@
 		</div>
 		{%endif%} {%endfor%} {%endif%} {%endwith%}
 		</div><div class="container">{%block content%}{%endblock%}</div>
+		 <!--   footer starts from here  -->
+		 <footer class="footer hero-foot pb-5 pl-6 mt-auto is-flex-align-items-flex-end" style="background-color: rgb(49, 49, 49);">
+		  
+	  
+	  <!-- Three columns created using columns class of Bulma -->
+	  <div class="columns has-text-white">
+		  <!-- Column 1 -->
+		<div class="column">
+	  
+		  <!-- Heading is left aligned, medium weight -->
+		  <h4 class="bd-footer-title 
+					 has-text-weight-bold
+					 has-text-left">
+			GeeksforGeeks
+		  </h4>
+	  
+		  <!-- footer content -->
+		  <p class="bd-footer-subtitle 
+					has-text-left">
+			Company Name
+		  </p>
+
+		  <div class="content">
+			<p>Copyright © Geeks</p>
+	  
+		  </div>
+	  
+		</div>
+	  
+		<!-- Column 2 -->
+		<div class="column">
+		  <h4 class="bd-footer-title 
+					 has-text-weight-bold 
+					 has-text-justify">
+			Services
+		  </h4>
+	  
+		  <!-- Column 2 lists with links -->
+		  <p class="bd-footer-subtitle">
+			 <a href="https://" class="has-text-white">
+			  <span class="icon-text">
+				<span>Review dialgnosis report</span>
+			  </span>
+			 </a>
+			  <br />
+			  <a href="https://" class="has-text-white">
+				  <span class="icon-text">
+					<span>Book an appointment</span>
+				  </span>
+				</a>
+		  </p>
+	  
+		</div>
+	  
+		<!-- Column 3 -->
+		<div class="column">
+		  <h4 class="bd-footer-subtitle
+					 has-text-weight-bold
+					 has-text-justify">
+			Contact us
+		  </h4>
+	  
+		  <!-- Column 3 lists with links -->
+		  <p class="bd-footer-subtitle"> 
+			  <a href="https://" class="has-text-white">
+				  <span class="icon-text">
+					<span>Contact Us</span>
+				  </span>
+				</a>
+			  <br />
+			  <a href="https://" class="has-text-white">
+				  <span class="icon-text">
+					<span>About us</span>
+				  </span>
+				</a>
+		  </p>
+	  
+		</div>
+
+		<!-- Column 4 -->
+		<div class="column">
+	  
+			<!-- Heading is left aligned, medium weight -->
+			<h4 class="bd-footer-title 
+					   has-text-weight-bold
+					   has-text-left">
+			  GeeksforGeeks
+			</h4>
+		
+			<!-- footer content -->
+			<p class="bd-footer-link 
+					  has-text-left">
+			  Company Name
+			</p>
+  
+			<div class="content">
+			  <p>Copyright © Geeks</p>
+		
+			</div>
+		
+		  </div>
+	  </div>
+	</footer>
 		<script
 			src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
