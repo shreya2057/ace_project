@@ -46,4 +46,50 @@
           </div>
     </article>
       </div>
+
+      <div class="box mt-6 pl-6 pr-6" id="card" onclick="getDoctor()">
+        <article class="media mt-2">
+          <div class="media-left">
+            <figure class="image is-128x128 is-rounded">
+              <img src="{{ url_for('static',filename='images/doctorProfile.jpg') }}" alt="Image">
+            </figure>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong class="is-size-5 m-1">Dr Divyanka Pradhan</strong> 
+                <br>
+                <small class="has-text-grey m-1">divyanka@gmail.com</small> 
+                <br>
+                <span class="m-1 has-text-grey">Qualification: MBBS General Medicine</span>
+                <br>
+                <span class="m-1 has-text-grey">Year of experience: 6</span>
+                <br>
+                <span class="m-1 has-text-grey">NMC Number: 3005</span>
+    
+              </p>
+            </div>
+    
+            </div>
+            <div class="media m-1" style="border: none">
+                <div class="media-left m-1">
+                    <figure class="image is-48x48 is-rounded mt-2">
+                      <img src="{{ url_for('static',filename='images/hospital.jpg') }}" alt="Image">
+                    </figure>
+                  </div>
+                  <div class="media-content m-1 mt-2">
+                    <div class="content">
+                      <p>
+                        <strong class="is-size-6 m-1">Bir Hospital</strong> 
+                        <br>
+                        <small class="has-text-grey m-1">Kathmandu, Nepal</small> 
+            
+                      </p>
+            
+                    </div>
+                  </div>
+      
+              </div>
+        </article>
+          </div>
 {% endblock %}
