@@ -54,8 +54,6 @@
 					{%if user.is_authenticated%}
 					{% if user.role=='Patient'%}
 					<a class="navbar-item has-text-weight-medium" href="/patientProfile">Profile</a>
-					{%else%}
-					<a class="navbar-item has-text-weight-medium" href="/docprofile">Profile</a>
 					{%endif%}
 					{%endif%}
 					<a class="navbar-item has-text-weight-medium" href="/doccard"> Doctors </a>
@@ -99,11 +97,11 @@
 		<div id="modal-js-example" class="modal">
 			<div class="modal-background"></div>
 			<div class="modal-content">
-				<form class="box p-5" action="/upload-scan" method="post" enctype="multipart/form-data">
+				<form class="box p-5" action="/scan-result" method="post" enctype="multipart/form-data">
 					<span class="has-text-link ml-5 is-size-5 has-text-weight-semibold">Predict your scan</span>
-					<br>
+					<hr class="m-3">
 					<div class="pl-5">
-					<h1>Select the type of your concerned disease.</h1>
+					<h1 class="pb-2">Select the type of your concerned disease.</h1>
 					<div class="field">
 						<div class="columns">
 						<label class="label has-text-link column is-two-fifths">Scan Type: </label>

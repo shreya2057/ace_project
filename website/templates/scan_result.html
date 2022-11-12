@@ -1,0 +1,52 @@
+{% extends "base.html" %} {%block title%}Doctors List{%endblock%} {% block
+content %}
+<div class="box mt-3">
+	<div class="has-text-centered">
+		<div>
+			<h3 class="is-size-5">
+				{%if result=='Tuberculosis'%} You are likely to have Tuberculosis.
+				Please consult your nearest doctor as soon as possible. Take care.
+				{%elif result=="No_Tuberculosis"%} It seems like you do not have
+				Tuberculosis. Please stay safe and healthy. Take care. {%elif result ==
+				'Pneumonia'%} You are likely to have Pneumonia. Please consult your
+				nearest doctor as soon as possible. Take care. {%elif
+				result=="No_Pneumonia"%} It seems like you do not have Pneumonia. Please
+				stay safe and healthy. Take care. {%elif result=='Glioma'%} You are
+				likely to have Glioma (a form of Brain Tumor). Please consult your
+				nearest doctor as soon as possible. Take care. {%elif
+				result=='Meningioma'%} You are likely to have Meningioma (a form of
+				Brain Tumor). Please consult your nearest doctor as soon as possible.
+				Take care. {%elif result =='Pituitary'%} You are likely to have
+				Pituitary (a form of Brain Tumor). Please consult your nearest doctor as
+				soon as possible. Take care. {%else%} It seems like you do not have
+				Brain Tumor. Please stay safe and healthy. Take care. {%endif%}
+			</h3>
+			<hr class="m-5" />
+			<h1 class="is-size-6">
+				If you want to know more about {%if result == 'Tuberculosis'%}
+				Tuberculosis {%elif result=='Pneumonia'%} Pneumonia {%elif
+				result=="Brain Tumour"%} Brain Tumour {%endif%}, please click on the
+				below button.
+			</h1>
+			<div class="button is-info is-outlined">
+				{%if disease=='Tuberculosis'%}
+				<a href="https://www.who.int/news-room/fact-sheets/detail/tuberculosis"
+					>Tuberculosis
+				</a>
+				{%elif result=='Pneumonia'%}
+				<a href="https://medlineplus.gov/pneumonia.html">Pneumonia</a>
+				{%elif result== 'Glioma' or result=="Meningioma" or
+				result=="Pituitary"%}
+				<a
+					href="https://www.cancer.net/cancer-types/brain-tumor/symptoms-and-signs"
+					>Brain Tumor</a
+				>
+				{%endif%}
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Brain Tumor
+Pneumonia
+Tuberculosis -->
+{%endblock%}
