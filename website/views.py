@@ -6,6 +6,7 @@ from flask_login import current_user, login_required
 from werkzeug.utils import secure_filename
 
 from . import app
+from .models import Scan
 
 views = Blueprint('views', __name__)
 
@@ -24,8 +25,15 @@ app.config['SCAN_UPLOAD'] = 'static/images/uploads/scans'
 def upload_scan():
 	if request.method == 'POST':
 		if request.files:
-			image = request.files['image']
-			filename=f'scan-{current_user.name}-{datetime.datetime.now()}.{os.path.splitext(image.filename)[1]}'
-			image.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['SCAN_UPLOAD'],secure_filename(filename)))
-			
+			image = request.files['scan']
+			# filename=f'scan-{current_user.name}-{datetime.datetime.now()}{os.path.splitext(image.filename)[1]}'
+			# image.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['SCAN_UPLOAD'],secure_filename(filename)))
+			uri = upload_image(image, 'scan')
+			new_scan = Scan(uri=uri,user_id=current_user.id)
+			flash('Scan successfully uploaded.',category='success')
 	return redirect(url_for('views.home'))
+
+def upload_image(image,type):
+	filename=f'{type}-{current_user.name}-{datetime.datetime.now()}{os.path.splitext(image.filename)[1]}'
+	image.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['SCAN_UPLOAD'],secure_filename(filename)))
+	return f'{app.config["SCAN_UPLOAD"]}/{filename}'

@@ -101,14 +101,7 @@
 				</div>
 			</div>
 
-			<input
-				type="text"
-				name="role"
-				value="{{role}}"
-				id="roleValue"
-				disabled
-				hidden
-			/>
+			<input type="text" name="role" value="Patient" id="roleValue" hidden />
 			<div class="field pl-1">
 				<label class="label has-text-link">Gender</label>
 				<div class="control">
@@ -176,7 +169,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="field mt-4 is-grouped">
 			<div class="control pr-4">
 				<label class="checkbox">
@@ -184,16 +176,18 @@
 					I agree to the <a href="#">terms and conditions</a>
 				</label>
 			</div>
-			<div class="pl-4">
-				<label class="checkbox">
-					<input
-						type="checkbox"
-						id="role"
-						value="{{checked}}"
-						onchange="changeValue();"
-					/>
-					<strong class="has-text-link">Signup as doctor</strong>
-				</label>
+			<div class="field">
+				<div class="control pl-4">
+					<label class="checkbox">
+						<input
+							type="checkbox"
+							id="role"
+							value="{{checked}}"
+							onchange="changeValue();"
+						/>
+						<strong class="has-text-link">Signup as doctor</strong>
+					</label>
+				</div>
 			</div>
 		</div>
 

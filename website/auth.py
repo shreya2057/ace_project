@@ -16,9 +16,9 @@ def login():
 		if user:
 			if check_password_hash(user.password, password):
 				if(user.role=='Patient'):
-					loggedUser = Patient.query.filter_by(user_id=user.id).first()
+					loggedUser = Patient.query.filter_by(id=user.id).first()
 				else:
-					loggedUser = Doctor.query.filter_by(user_id=user.id).first()
+					loggedUser = Doctor.query.filter_by(id=user.id).first()
 				login_user(loggedUser,remember=True)
 				flash("Logged In Successfully.",category='success')
 				return redirect(url_for('views.home'))
@@ -40,7 +40,6 @@ def signup():
 		role = request.form.get('role')
 		if role == 'Patient':
 			dob = request.form.get('dob')
-			scans = []
 		else:
 			nmc_number = request.form.get('nmcNumber')
 			practice_years = request.form.get('practice_years')
@@ -68,16 +67,16 @@ def signup():
 			db.session.add(new_user)
 			db.session.commit()
 			if role == 'Patient':
-				new_patient = Patient(dob = dob, user_id = new_user.id)
+				new_patient = Patient(dob = dob, id = new_user.id)
 				db.session.add(new_patient)
 			else:
-				new_doctor=Doctor(nmc_number = nmc_number,practice_years=practice_years,expertise=expertise,hospital=hospital,qualification=qualification, user_id = new_user.id)
+				new_doctor=Doctor(id = new_user.id,nmc_number = nmc_number,practice_years=practice_years,expertise=expertise,hospital=hospital,qualification=qualification)
 				db.session.add(new_doctor)
 			db.session.commit()
 			if(new_user.role=='Patient'):
-				loggedUser = Patient.query.filter_by(user_id=new_user.id).first()
+				loggedUser = Patient.query.filter_by(id=new_user.id).first()
 			else:
-				loggedUser = Doctor.query.filter_by(user_id=new_user.id).first()
+				loggedUser = Doctor.query.filter_by(id=new_user.id).first()
 			login_user(loggedUser,remember=True)
 			flash('Signed Up Successfully.',category='success')
 

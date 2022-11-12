@@ -47,15 +47,15 @@
 
 			<div id="navbarBasicExample" class="navbar-menu">
 				<div class="navbar-start">
-					<a class="navbar-item"> Home </a>
+					<a class="navbar-item" href="/"> Home </a>
 
 					<a class="navbar-item"> Doctors </a>
 					<!-- Button to add the scan -->
+					{%if user.is_authenticated and user.role=='Patient'%}
 					<div class="buttons pl-2">
-						<button class="navbar-item button is-primary is-outlined js-modal-trigger" data-target="modal-js-example">Review Scan</button></div>
-					
-					
-				</div>
+							<button class="navbar-item button is-primary is-outlined js-modal-trigger" data-target="modal-js-example">Review Scan</button></div>
+					{%endif%}
+					</div>
 
 				<div class="navbar-end">
 					<div class="navbar-item">
@@ -88,49 +88,44 @@
 		</nav>
 		<div id="modal-js-example" class="modal">
 			<div class="modal-background"></div>
-		  
 			<div class="modal-content">
-			<section class="box p-5">
-				<span class="has-text-link ml-5 is-size-5 has-text-weight-semibold">Upload your scan</span>
-				<div class="notification mb-0 ml-5 pl-0 is-white">
-					Select the image of your report from the device for further diagnosis
-				  </div>
-				<form action="POST">
+				<form class="box p-5" action="/upload-scan" method="post" enctype="multipart/form-data">
+					<span class="has-text-link ml-5 is-size-5 has-text-weight-semibold">Upload your scan</span>
+					<div class="notification mb-0 ml-5 pl-0 is-white">
+						Select the image of your report from the device for further diagnosis
+					</div>
+					<!-- <form  action="/upload-scan" method="post" enctype="multipart/form-data"> -->
 					<input type="button" id ="fileUpload" value="Select your scan" class="button is-link ml-5 mr-5 mt-0 mb-3" onclick="document.getElementById('file').click();" />
-					<input type="file" style="display:none;" id="file" name="file" accept="image/*"/>
-				</form>
-
-				
-				<div id="upload" style="box-shadow: none;" hidden>
-					<img id="preview" src="#" width="350px" height="350px" style="object-fit: contain;" class="ml-5" alt="your image" />
-					<div class="mt-4"><button class="button is-link ">Upload</button></div>
+					<input type="file" style="display:none;" id="file" name="scan" accept="image/*"/>
+					<div id="upload" style="box-shadow: none;" hidden>
+						<img id="preview" src="#" width="350px" height="350px" style="object-fit: contain;" class="ml-5" alt="your image" />
+						<br>
+						<button class="button is-link mt-4" type="submit">Upload</button>
+					</div>
+					<!-- </form> -->
 				</div>
-				
-			</div>
-			</section>
-
-			</div>
-		  
-			<button class="modal-close is-large" aria-label="close"></button>
-		  </div>
+			</form>
+		</div>
+		<button class="modal-close is-large" aria-label="close"></button>
 		<!-- Flash Message -->
+		<div class="mt-3 ml-6 mr-6">
 		{%with messages = get_flashed_messages(with_categories=true)%} {% if
 		messages %} {%for category,message in messages%} {% if category=='error' %}
-		<div class="alert alert-danger alter-dismissable fade show" role="alert">
+		<div class="box flash-message has-background-danger" role="alert">
 			{{message}}
-			<button class="close" type="button" data-dismiss="alert">
+			<button class="close pull-right" type="button" data-dismiss="alert">
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
 		{%else%}
-		<div class="alert alert-success alter-dismissable fade show" role="alert">
+		<div class="box flash-message has-background-primary" role="alert">
 			{{message}}
-			<button class="close" type="button" data-dismiss="alert">
+			<button class="close pull-right" type="button" data-dismiss="alert">
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
 		{%endif%} {%endfor%} {%endif%} {%endwith%}
-		<div class="container">{%block content%}{%endblock%}</div>
+		</div><div class="container">{%block content%}{%endblock%}</div>
 		<script
 			src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
