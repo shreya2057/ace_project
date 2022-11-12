@@ -95,3 +95,9 @@ document.addEventListener("DOMContentLoaded", () => {
 function hide(){
 	document.getElementById("flash").hidden=true
 }
+
+function getDoctor(){
+	document.getElementById("card").onclick = function () {
+        location.href = "/docprofile";
+    };
+}
