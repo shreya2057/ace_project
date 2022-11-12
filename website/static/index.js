@@ -92,8 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-function hide(){
-	document.getElementById("flash").hidden=true
+function hideMessage(){
+	document.getElementById("flash").hidden=true;
 }
 
 function getDoctor(){
